@@ -1,6 +1,8 @@
 import React from 'react';
-// import dotenv from 'dotenv';
+// import env from "react-dotenv";
 import '../styles/Home.css';
+import alpaca_logo from '../assets/alpaca_logo.png';
+import Utils from '../utils/Utils'
 
 // we need to call dotenv.config() before attempting to access env variables
 // dotenv.config();
@@ -15,16 +17,48 @@ async function handleSubmit(event){
     `?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=account:write%20trading%20data`;
     // Redirect
     document.location.href = alpaca_oauth;
-}
+};
 
+function isLoggedIn(){
+    const auth_token = window.localStorage.getItem("auth-token")
+    if (auth_token === null) return false;
+    else return true;
+}
+async function getAuthTokenAsync(){
+    if (window.localStorage.getItem('auth-token') === null){
+        console.log("hit1")
+
+        var oauth_code = new URLSearchParams(window.location.search).get('code');
+        console.log("hit2")
+        const auth_token = await Utils.getAuthToken(oauth_code);
+        console.log(auth_token)
+        console.log("---")
+        window.localStorage.setItem('auth-token', auth_token)
+    }
+}
 function Home(){
-    return (
-        <div id='main_container'>
-            <button onClick={handleSubmit}>
-                <input className="button-width" type="submit" value="Sign in with Alpaca" />
-            </button>
-        </div>
-    );
+    getAuthTokenAsync();
+    console.log(isLoggedIn());
+    if(!isLoggedIn){
+        return(
+            <div id='main_container'>
+                <button id='alpacaButton' onClick={handleSubmit}>
+                    <p className="button-width">Sign in with Alpaca</p>
+                </button>
+                <div className="content-footer">
+                    <label className="content-label"> Powered by </label>
+                    <img src={alpaca_logo} alt='Alpaca Logo' />
+                </div>
+            </div>
+        );
+    }else{
+        return(
+            <div id='main_container'>
+                
+            </div>
+        );
+    }
+
 }
 
 export default Home;
