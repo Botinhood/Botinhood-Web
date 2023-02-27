@@ -39,7 +39,7 @@ async function getAuthTokenAsync(){
 function Home(){
     getAuthTokenAsync();
     console.log(isLoggedIn());
-    if(!isLoggedIn){
+    if(!isLoggedIn()){
         return(
             <div id='main_container'>
                 <button id='alpacaButton' onClick={handleSubmit}>
@@ -54,7 +54,7 @@ function Home(){
     }else{
         return(
             <div id='main_container'>
-                
+                <p>{window.localStorage.getItem('auth-token')}</p>
             </div>
         );
     }

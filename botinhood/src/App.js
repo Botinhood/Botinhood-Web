@@ -6,11 +6,13 @@ import Assets from './pages/Assets';
 import Orders from './pages/Orders';
 import Overview from './pages/Overview';
 import Sidebar from './components/Sidebar';
+import Header from './components/Header';
 
 function App() {
   return (
     <Router>
-      <Sidebar/>
+      <Sidebar />
+      <Header />
       <Routes>
         <Route path='/' exact element={<Home />} />
         <Route path='/assets' exact element={<Assets />} />
