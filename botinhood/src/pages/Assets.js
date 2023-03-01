@@ -18,7 +18,7 @@ function Assets(){
     const [myStocks, setMyStocks] = useState(tempStockData)
 
     return (
-        <div id='main_container'>
+        <div className='main_container'>
             
             <div id='portfolio_container'>
                 
