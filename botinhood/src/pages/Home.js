@@ -26,16 +26,12 @@ function isLoggedIn(){
 }
 async function getAuthTokenAsync(){
     if (window.localStorage.getItem('auth-token') === null){
-        console.log("hit1")
-
         var oauth_code = new URLSearchParams(window.location.search).get('code');
-        console.log("hit2")
         const auth_token = await Utils.getAuthToken(oauth_code);
-        console.log(auth_token)
-        console.log("---")
         window.localStorage.setItem('auth-token', auth_token)
     }
 }
+
 function Home(){
     getAuthTokenAsync();
     console.log(isLoggedIn());
