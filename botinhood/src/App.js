@@ -15,9 +15,9 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' exact element={<Home />} />
-        <Route path='/assets' exact element={<Assets />} />
-        <Route path='/orders' exact element={<Orders />} />
-        <Route path='/overview' exact element={<Overview />} />
+        <Route path='/assets' element={<Assets />} />
+        <Route path='/orders' element={<Orders />} />
+        <Route path='/overview' element={<Overview />} />
       </Routes>
     </Router>
   );

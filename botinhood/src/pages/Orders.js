@@ -1,8 +1,11 @@
 import React from 'react';
+import '../styles/Orders.css';
 
 function Orders(){
     return (
-        <div></div>
+        <div className="#main_container">
+           
+        </div>
     );
 }
 

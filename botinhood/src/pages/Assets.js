@@ -1,8 +1,9 @@
 import React from 'react';
+import '../styles/Home.css';
 
 function Assets(){
     return (
-        <div></div>
+        <div className='main_container'></div>
     );
 }
 

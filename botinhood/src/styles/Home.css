@@ -1,10 +1,3 @@
-#main_container{
-    height: 100%;
-    width: 100%;
-    grid-column: 2;
-    background-color: #3d3d3d;
-}
-
 #alpacaButton{
     margin-top: 40vh;
     margin-left:40vw;
@@ -23,4 +16,63 @@
     width: 30vw;
     display: flex;
     flex-direction: column;
+}
+
+.select_bot {
+    position: relative;
+}
+
+.dropdown{
+    width: 70vw;
+    margin: auto 10%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.menu {
+    position: absolute;
+
+    list-style-type: none;
+    margin: auto 15%;
+    padding: 0;
+
+    border: 1px groove grey;
+    width: 60vw;
+}
+
+.menu > li {
+    margin: 0;
+
+    background-color: white;
+}
+
+.menu > li:hover {
+    background-color: lightgray;
+}
+
+.menu > li > button {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 5px;
+    margin: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
+/* Stock List */
+.stock_list_container{
+    width: 80vw;
+    margin: auto 5%;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid grey;
+}
+
+.stock_item{
+    margin: 5px;
 }
