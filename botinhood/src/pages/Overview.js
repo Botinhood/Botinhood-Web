@@ -2,7 +2,11 @@ import React from 'react';
 
 function Overview(){
     return (
-        <div></div>
+        <div className='main_container'>
+            <div className='test'>
+                <p>Overview Page</p>
+            </div>
+        </div>
     );
 }
 

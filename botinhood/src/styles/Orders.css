@@ -1,0 +1,16 @@
+#main_container{
+    
+        background-color: #666666;
+        height: 80%;
+        width: 80%;
+        border-radius: 5%;
+        /* display: flex; */
+        justify-content: center;
+        vertical-align: middle;
+    
+}
+
+.order_container {
+    background-color: brown;
+   
+}
