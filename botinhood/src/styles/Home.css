@@ -25,8 +25,13 @@
 .dropdown{
     width: 70vw;
     margin: auto 10%;
+    margin-top: 100px;
     padding: 10px;
     border-radius: 10px;
+}
+
+.dropdown:hover{
+    cursor: pointer;
 }
 
 .menu {
@@ -64,15 +69,62 @@
     cursor: pointer;
 }
 
+/* Stock input */
+.new_stock_input{
+    width: 70vw;
+    height: 30px;
+    margin: auto 5%;
+    margin-top: 20px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    border-top-left-radius: 10px;
+    border: 1px solid grey;
+}
+
+.new_stock_btn{
+    margin: 0%;
+    width: 9.5vw;
+    height: 34px;
+    border: 1px solid grey;
+    border-top-right-radius: 10px;
+}
+
+.new_stock_btn:hover{
+    cursor: pointer;
+    background-color: lightgrey;
+}
+
 /* Stock List */
 .stock_list_container{
     width: 80vw;
     margin: auto 5%;
-    margin-top: 10px;
-    border-radius: 10px;
+    margin-top: 0px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     border: 1px solid grey;
 }
 
 .stock_item{
-    margin: 5px;
+    padding: 5px;
+    margin: 0px;
+    display: grid;
+    grid-template-columns: 1fr 50px;
+    /* width: 100%; */
+}
+
+.stock_item:hover{
+    background-color: lightgray;
+}
+
+.delete-btn{
+    display: none;
+    background-color: #EA6165;
+    border: none;
+    border-radius: 10px;
+    height: 40px;
+    width: 40px;
+}
+
+.delete-btn:hover{
+    cursor: pointer;
 }

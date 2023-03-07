@@ -2,7 +2,8 @@ import React from 'react';
 // import env from "react-dotenv";
 import '../styles/Home.css';
 import alpaca_logo from '../assets/alpaca_logo.png';
-import Utils from '../utils/Utils'
+import Utils from '../utils/Utils';
+import StockItem from '../components/StockItem';
 
 // we need to call dotenv.config() before attempting to access env variables
 // dotenv.config();
@@ -47,7 +48,29 @@ async function getStockData(botType){
     return await res.json();
 }
 
-
+// +-----------------Set Stocks from input-------------------+
+async function addStockData(e){
+    let stockData = await getStockData("LongShort");
+    let newStock = e.target[0].value.toUpperCase();
+    
+    stockData.push(newStock)
+    console.log(stockData);
+    await fetch("http://localhost:8000/api/v1/stock/setLongShort", {
+        method: "POST",
+        mode: "cors",
+        headers: {
+            'Content-Type': "application/json",
+            'Cache-Control': 'no-cache',
+            'Accept': '*/*',
+            'Accept-Encoding': 'gzip,deflate,br',
+            'Connection': 'keep-alive'
+        },
+        body:  JSON.stringify({
+            "stocks": stockData
+        })
+    })
+    // console.log('waiting for response');
+}
 
 function Home(){
     const [open, setOpen] = React.useState(false);
@@ -74,9 +97,8 @@ function Home(){
             
             for (let i = 0; i < res.length; i++) {
                 const element = res[i];
-                stockListArray.push(<p className='stock_item'>{element}</p>)
+                stockListArray.push(<StockItem name={element}/>)
             }
-            console.log(stockListArray)
             setStockList(stockListArray)
         })
     }, [])
@@ -110,13 +132,16 @@ function Home(){
                         </ul>
                     ) : null}
                 </div> 
+                <form onSubmit={addStockData}>
+                    <input className='new_stock_input' type='text' name='stock_input'></input>
+                    <button className='new_stock_btn' type='submit'>+</button>
+                </form>
                 <div className='stock_list_container'>
                     {stockList} 
                 </div>         
             </div>
         );
     }
-
 }
 
 export default Home;
