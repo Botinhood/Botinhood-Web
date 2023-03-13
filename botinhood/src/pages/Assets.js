@@ -7,9 +7,11 @@ import StockRow from '../components/StockRow';
 const CLIENT_ID = '0b17ccc305d2be4a87d6d54135ea0f28';
 const REDIRECT_URI = 'http://localhost:3000/';
 
+
+
 // +-----------------Getting Stock Info-------------------+
 async function getStockData(botType){
-    let res = await fetch("http://localhost:8000/api/v1/stock/getLongShort", {
+    let res = await fetch("http://localhost:8000/api/v1/stock/getBotBars", {
         method: "GET",
         headers: {
             'Cache-Control': 'no-cache',
@@ -29,18 +31,13 @@ const tempStockData = [
 function Assets(){
     const [myStocks, setMyStocks] = useState(tempStockData)
     const [stockList, setStockList]= useState(tempStockData);
+    const [toggleStocks, setToggleStocks] = useState(false)
 
     useEffect(() =>{
         getStockData('LongShort').then((res) => {
-            
-            const stockListArray = []
-            
-            for (let i = 0; i < res.length; i++) {
-                const element = res[i];
-                stockListArray.push(<p className='stock_item'>{element}</p>)
-            }
-            console.log(stockListArray)
-            setStockList(stockListArray)
+            console.log(res)
+            setStockList(res)
+            setToggleStocks(true)
         })
     }, [])
 
@@ -49,16 +46,22 @@ function Assets(){
             
             <div id='portfolio_container'>
                 
-                <h1 class='center'>Your Portfolio</h1>
+                <h1 className='center'>Your Portfolio</h1>
 
                 <img id='graph' src={graph} alt="graph" />
 
-                {stockList.map((post) =>
-                    <StockRow content={post}/>
-                )}
                 <div>
-                    
+                    {/* {stockList}  */}
                 </div>
+                
+                {toggleStocks && stockList.map((post) =>
+                    <StockRow key={1} content={post}/>
+                )}
+
+
+                {/* {stockList.map((post) =>
+                    <StockRow content={post}/>
+                )} */}
 
             </div>
 

@@ -1,14 +1,26 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import '../styles/Assets.css'
 
 
 function StockRow (props){
-    console.log(props.content.props.children)
+    const [backgroundColor, setBackgroundColor] = useState('#599B88')
+    console.log(props.content)
+    console.log(props.content.bar)
+    useEffect(() => {
+        if (props.content.bar.value.OpenPrice > props.content.bar.value.ClosePrice) 
+        {
+            setBackgroundColor('#EF5778')
+            console.log(backgroundColor)
+        }
+    })
+
+
     return(
-        <div id='stock-container'>
-            <p class='stock-text'>{props.content.props.children}</p>
-            <p class='stock-text'>{props.content.qauntity}</p>
-            <p class='stock-text'>{props.content.bought}</p>
+        <div style={{background:backgroundColor}} id='stock-container'>
+            <p class='stock-text'>{props.content.name}</p>
+            <p class='stock-text'>{props.content.bar.value.OpenPrice}</p>
+            <p class='stock-text'>{props.content.bar.value.ClosePrice}</p>
+
         </div>
     )
 }
