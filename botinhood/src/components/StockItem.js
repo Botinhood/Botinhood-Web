@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import deleteImg from '../assets/delete.png';
 
+
 // +-----------------Getting Stock Info-------------------+
 async function getStockData(botType){
     let res = await fetch("http://localhost:8000/api/v1/stock/getLongShort", {
