@@ -34,11 +34,20 @@ function Assets(){
     const [toggleStocks, setToggleStocks] = useState(false)
 
     useEffect(() =>{
-        getStockData('LongShort').then((res) => {
-            console.log(res)
-            setStockList(res)
-            setToggleStocks(true)
-        })
+        const interval = setInterval(() => {
+            getStockData('LongShort').then((res) => {
+                res.sort((a, b) => {
+                    if (a.name < b.name) { return -1 }
+                    if (a.name > b.name) { return 1 }
+                    return 0
+                })
+                console.log(res)
+                setStockList(res)
+                setToggleStocks(true)
+            })
+        }, 10)
+    
+        return () => clearInterval(interval)
     }, [])
 
     return (
