@@ -4,13 +4,16 @@ import '../styles/Assets.css'
 
 function StockRow (props){
     const [backgroundColor, setBackgroundColor] = useState('#599B88')
-    console.log(props.content)
-    console.log(props.content.bar)
+    // console.log(props.content)
+    // console.log(props.content.bar)
     useEffect(() => {
         if (props.content.bar.value.OpenPrice > props.content.bar.value.ClosePrice) 
         {
             setBackgroundColor('#EF5778')
-            console.log(backgroundColor)
+            // console.log(backgroundColor)
+        }
+        else {
+            setBackgroundColor('599B88#')
         }
     })
 
