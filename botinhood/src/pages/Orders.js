@@ -1,28 +1,35 @@
 import React from 'react';
 import '../styles/Orders.css';
 import StockItem from '../components/StockItem';
+import StockOrder from '../components/StockOrder';
 
-async function getShort(botType){
+async function getLong(botType){
     let res = await fetch("http://localhost:8000/api/v1/stock/getLong", {
         method: "GET",
         headers: {
             'Cache-Control': 'no-cache',
             'Accept': '*/*',
             'Accept-Encoding': 'gzip,deflate,br'
-        }
-    })}
+        }})
+    
+    console.log('waiting for response');
+    console.log(res.json())
+    return await res.json();
+    }
 
 
 
-    async function getLong(botType){
+    async function getShort(botType){
         let res = await fetch("http://localhost:8000/api/v1/stock/getShort", {
             method: "GET",
             headers: {
                 'Cache-Control': 'no-cache',
                 'Accept': '*/*',
                 'Accept-Encoding': 'gzip,deflate,br'
-            }
-        })}
+            }})
+            console.log('waiting for a respones');
+            return await res.json();
+        }
 
         async function getStockData(botType){
             let res = await fetch("http://localhost:8000/api/v1/stock/getLongShort", {
@@ -50,13 +57,15 @@ function Orders(){
         // // getStockData("LongShort")
         
         React.useEffect(() =>{
-            getStockData('LongShort').then((res) => {
+            getLong('LongShort').then((res) => {
                 
                 const stockListArray = []
                 
                 for (let i = 0; i < res.length; i++) {
                     const element = res[i];
-                    stockListArray.push(<StockItem name={element}/>)
+                    const p2 = res[i]
+                    console.log(p2)
+                    stockListArray.push(<StockOrder name={element} p2={'WORDS'}/>)
                 }
                 setStockList(stockListArray)
             })
@@ -73,11 +82,16 @@ function Orders(){
         //             </div>         
         //         </div>
         //     );
-        <div>
-      {stockList.map((item) => (
-        <p key={item}>{item}</p>
-      ))}
-    </div>)
+
+        // The backend console displays the data you need send that over here. Create the html for where that data will
+        // be displayed
+        <div className='main_container'>
+            <div className='order_container'>
+                {stockList && stockList.map((item) => (
+                <p key={item}>{item}</p>
+      )         )}
+            </div>
+        </div>)
         }
 
 export default Orders;
