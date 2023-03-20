@@ -7,7 +7,7 @@ function StockRow (props){
     // console.log(props.content)
     // console.log(props.content.bar)
     useEffect(() => {
-        if (props.content.bar.value.OpenPrice > props.content.bar.value.ClosePrice) 
+        if (props.content.bar.OpenPrice > props.content.bar.ClosePrice) 
         {
             setBackgroundColor('#EF5778')
             // console.log(backgroundColor)
@@ -21,8 +21,8 @@ function StockRow (props){
     return(
         <div style={{background:backgroundColor}} id='stock-container'>
             <p class='stock-text'>{props.content.name}</p>
-            <p class='stock-text'>{props.content.bar.value.OpenPrice}</p>
-            <p class='stock-text'>{props.content.bar.value.ClosePrice}</p>
+            <p class='stock-text'>{props.content.bar.OpenPrice}</p>
+            <p class='stock-text'>{props.content.bar.ClosePrice}</p>
 
         </div>
     )
