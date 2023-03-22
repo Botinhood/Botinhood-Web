@@ -1,11 +1,14 @@
 import React, {useState} from "react";
-
-function StockOrder({name}, {p2}){
+import '../styles/StockOrder.css';
+function StockOrder({name}){
     return (
-        <div>
+        <div className="order_container1">
+            <div >
+            <h4>Open/closed</h4>
             {name}
-            <div>
-            {p2}
+            </div>
+            <div className="info">
+            <p>Info goes here: When order was filled</p>
             </div>
         </div>
     )

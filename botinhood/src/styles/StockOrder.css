@@ -1,0 +1,17 @@
+.stock{
+float: left;
+}
+
+.info{
+/* background-color: blue; */
+}
+
+.order_container1{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    /* flex-shrink: 0; */
+    border-bottom-right-radius: 10px;
+    border: 1px solid grey;
+    /* justify-content: space-between; */
+}

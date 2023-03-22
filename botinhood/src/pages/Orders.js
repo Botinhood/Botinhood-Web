@@ -10,12 +10,8 @@ async function getLong(botType){
             'Cache-Control': 'no-cache',
             'Accept': '*/*',
             'Accept-Encoding': 'gzip,deflate,br'
-        }})
-    
-    console.log('waiting for response');
-    console.log(res.json())
-    return await res.json();
-    }
+        }
+    })}
 
 
 
@@ -57,15 +53,13 @@ function Orders(){
         // // getStockData("LongShort")
         
         React.useEffect(() =>{
-            getLong('LongShort').then((res) => {
+            getStockData('LongShort').then((res) => {
                 
                 const stockListArray = []
                 
                 for (let i = 0; i < res.length; i++) {
                     const element = res[i];
-                    const p2 = res[i]
-                    console.log(p2)
-                    stockListArray.push(<StockOrder name={element} p2={'WORDS'}/>)
+                    stockListArray.push(<StockOrder name={element}/>)
                 }
                 setStockList(stockListArray)
             })
@@ -82,16 +76,15 @@ function Orders(){
         //             </div>         
         //         </div>
         //     );
-
         // The backend console displays the data you need send that over here. Create the html for where that data will
         // be displayed
         <div className='main_container'>
             <div className='order_container'>
-                {stockList && stockList.map((item) => (
-                <p key={item}>{item}</p>
-      )         )}
-            </div>
-        </div>)
+      {stockList && stockList.map((item) => (
+        <p key={item}>{item}</p>
+      ))}
+      </div>
+    </div>)
         }
 
 export default Orders;
