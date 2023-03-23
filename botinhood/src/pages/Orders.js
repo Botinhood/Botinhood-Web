@@ -10,8 +10,10 @@ async function getLong(botType){
             'Cache-Control': 'no-cache',
             'Accept': '*/*',
             'Accept-Encoding': 'gzip,deflate,br'
-        }
-    })}
+        }    
+    } )
+    return await res.json();
+}
 
 
 
@@ -53,7 +55,7 @@ function Orders(){
         // // getStockData("LongShort")
         
         React.useEffect(() =>{
-            getStockData('LongShort').then((res) => {
+            getLong('LongShort').then((res) => {
                 
                 const stockListArray = []
                 

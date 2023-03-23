@@ -1,17 +1,15 @@
 .stock{
-float: left;
+/* For any styling needed in the future */
 }
 
 .info{
-/* background-color: blue; */
+/* For any styling needed in the future */
 }
 
-.order_container1{
+.orders_container{
     display: flex;
     justify-content: space-between;
-    flex-direction: column;
-    /* flex-shrink: 0; */
+    flex-direction: row;
     border-bottom-right-radius: 10px;
     border: 1px solid grey;
-    /* justify-content: space-between; */
 }

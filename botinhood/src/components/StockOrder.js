@@ -1,14 +1,19 @@
 import React, {useState} from "react";
 import '../styles/StockOrder.css';
+
+// function StockOrder({name}, {availability}, {timestamp}, {quantity}, {transaction}){
 function StockOrder({name}){
     return (
-        <div className="order_container1">
+        <div className="orders_container">
             <div >
-            <h4>Open/closed</h4>
-            {name}
+                <h4>Open/Closed</h4>
+                {/* <h4>{availability}</h4> */}
+                {name}
             </div>
             <div className="info">
-            <p>Info goes here: When order was filled</p>
+                <p>When order was filled</p>
+                {/* <p>Filled: {timestamp}</p> */}
+                {/* <p>{quantity}({quantity} | Market {transaction} Day)</p> */}
             </div>
         </div>
     )
