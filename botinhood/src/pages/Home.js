@@ -22,6 +22,7 @@ async function handleSubmit(e){
 
 function isLoggedIn(){
     const auth_token = window.localStorage.getItem("auth-token")
+    console.log(auth_token)
     if (auth_token === null) return false;
     else return true;
 }
@@ -30,6 +31,7 @@ async function getAuthTokenAsync(){
     if (window.localStorage.getItem('auth-token') === null){
         var oauth_code = new URLSearchParams(window.location.search).get('code');
         const auth_token = await Utils.getAuthToken(oauth_code);
+        console.log(auth_token)
         window.localStorage.setItem('auth-token', auth_token)
     }
 }
