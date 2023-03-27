@@ -44,20 +44,16 @@ async function getLong(botType){
 
 
 function Orders(){
-        // <div className="main_container">
-        //    <div className='order_container'>
-        //     <p>Test line</p>
-        //    </div>
-        // </div>
-        // const myArray = ["item 1", "item 2", "item 3"];
-        // const [open, setOpen] = React.useState(false);
+       
         const [stockList, setStockList]=React.useState(null);
-        // // getStockData("LongShort")
+        
         
         React.useEffect(() =>{
+            const stockListArray = []
+
             getLong('LongShort').then((res) => {
                 
-                const stockListArray = []
+                
                 
                 for (let i = 0; i < res.length; i++) {
                     const element = res[i];
@@ -65,7 +61,32 @@ function Orders(){
                 }
                 setStockList(stockListArray)
             })
+
+            getShort('LongShort').then((res) => {
+                
+                // const stockListArray = []
+                
+                for (let i = 0; i < res.length; i++) {
+                    const element = res[i];
+                    stockListArray.push(<StockOrder name={element}/>)
+                }
+                setStockList(stockListArray)
+            })
+            setStockList(stockListArray)
         }, [])
+
+        // React.useEffect(() =>{
+        //     getShort('LongShort').then((res) => {
+                
+        //         // const stockListArray = []
+                
+        //         for (let i = 0; i < res.length; i++) {
+        //             const element = res[i];
+        //             stockListArray.push(<StockOrder name={element}/>)
+        //         }
+        //         setStockList(stockListArray)
+        //     })
+        // }, [])
     
             return(
         //         <div className='main_container'>
