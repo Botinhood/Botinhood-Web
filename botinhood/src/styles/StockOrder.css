@@ -1,0 +1,15 @@
+.stock{
+/* For any styling needed in the future */
+}
+
+.info{
+/* For any styling needed in the future */
+}
+
+.orders_container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    border-bottom-right-radius: 10px;
+    border: 1px solid grey;
+}
