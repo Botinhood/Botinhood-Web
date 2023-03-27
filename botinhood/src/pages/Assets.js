@@ -19,7 +19,7 @@ async function getStockData(botType){
             'Accept-Encoding': 'gzip,deflate,br'
         }
     })
-    console.log('waiting for response');
+    // console.log('waiting for response');
     return await res.json();
 }
 
@@ -58,8 +58,12 @@ function Assets(){
             getStockData('LongShort').then((res) => {
                 setTotalMoney(0.0)
                 for (let i = 0; i < res.length; i++) {
-                    let totalValue = totalMoney + ( res[1].bar.value.Volume * res[1].bar.value.ClosePrice )
-                    setTotalMoney(totalValue)
+                    console.log(res[1].bar[1].Volume)
+                    let Volume = res[1].bar[1].Volume
+                    let ClosePrice = res[1].bar[1].ClosePrice
+                    if (typeof(Volume) != "undefined" && typeof(Volume) != "undefined" ){
+                    let totalValue = totalMoney + ( Volume * ClosePrice )
+                    setTotalMoney(totalValue)}
                   } 
                 // console.log(res)
                 // new = res.bar.value.ClosePrice
