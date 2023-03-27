@@ -1,18 +1,15 @@
 import React from 'react';
-// import env from "react-dotenv";
-import '../styles/Home.css';
-import alpaca_logo from '../assets/alpaca_logo.png';
-import Utils from '../utils/Utils';
-import StockItem from '../components/StockItem';
+import '../styles/Home.css'; // import css file
+import alpaca_logo from '../assets/alpaca_logo.png'; // import logo
+import Utils from '../utils/Utils'; // import utility functions
+import StockItem from '../components/StockItem'; // import custom component
 
-// we need to call dotenv.config() before attempting to access env variables
-// dotenv.config();
-
-const CLIENT_ID = '0b17ccc305d2be4a87d6d54135ea0f28';
-const REDIRECT_URI = 'http://localhost:3000/';
+const CLIENT_ID = '0b17ccc305d2be4a87d6d54135ea0f28'; // Alpaca client ID
+const REDIRECT_URI = 'http://localhost:3000/'; // Redirect URI
 
 // This method will fire when our button is pressed
 async function handleSubmit(e){
+    // function to handle user authentication with Alpaca
     // we will redirect our users to the following URL so that they can authenticate with Alpaca.
     const alpaca_oauth = `https://app.alpaca.markets/oauth/authorize` +
     `?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=account:write%20trading%20data`;
@@ -21,6 +18,7 @@ async function handleSubmit(e){
 };
 
 function isLoggedIn(){
+    // function to check if user is logged in
     const auth_token = window.localStorage.getItem("auth-token")
     console.log(auth_token)
     if (auth_token === null) return false;
@@ -28,6 +26,7 @@ function isLoggedIn(){
 }
 
 async function getAuthTokenAsync(){
+    // function to get authentication token for the user
     if (window.localStorage.getItem('auth-token') === null){
         var oauth_code = new URLSearchParams(window.location.search).get('code');
         const auth_token = await Utils.getAuthToken(oauth_code);
@@ -38,6 +37,7 @@ async function getAuthTokenAsync(){
 
 // +-----------------Getting Stock Info-------------------+
 async function getStockData(botType){
+    // function to fetch stock data from the API
     let res = await fetch("http://localhost:8000/api/v1/stock/getLongShort", {
         method: "GET",
         headers: {
@@ -52,6 +52,7 @@ async function getStockData(botType){
 
 // +-----------------Set Stocks from input-------------------+
 async function addStockData(e){
+    // function to add new stock data to the API
     let stockData = await getStockData("LongShort");
     let newStock = e.target[0].value.toUpperCase();
     
@@ -75,24 +76,24 @@ async function addStockData(e){
 }
 
 function Home(){
-    const [open, setOpen] = React.useState(false);
-    const [stockList, setStockList]=React.useState(null);
-    getAuthTokenAsync();
-    // getStockData("LongShort")
+    // main component for the home page
+    const [open, setOpen] = React.useState(false); // state for dropdown menu
+    const [stockList, setStockList]=React.useState(null); // state for list of stocks
+    
+    getAuthTokenAsync();  // get authentication token when component mounts
+    
     const handleOpen = () => {
+        // function to handle opening/closing of dropdown menu
         setOpen(!open);
     };
 
     const handleLongShort = () => {
-        // do something
+        // function to handle user selection of LongShort bot
         setOpen(false);
     };
     
-    //   const handleMenuTwo = () => {
-    //     // do something
-    //     setOpen(false);
-    //   };
     React.useEffect(() =>{
+        // effect to fetch stock data when component mounts
         getStockData('LongShort').then((res) => {
             
             const stockListArray = []
@@ -107,6 +108,7 @@ function Home(){
     
     
     if(!isLoggedIn()){
+        // if user is not logged in, display Alpaca authentication button
         return(
             <div className='main_container'>
                 <button id='alpacaButton' onClick={handleSubmit}>
@@ -119,6 +121,7 @@ function Home(){
             </div>
         );
     }else{
+        // if user is logged in, display dropdown menu and stock list
         return(
             <div className='main_container'>
                 <div className='select_bot'>

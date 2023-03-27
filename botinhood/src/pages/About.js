@@ -1,9 +1,10 @@
+// Importing React library and styles from About.css file
 import React from 'react';
 import '../styles/About.css';
 
-
-
+// Creating the About component
 function About() {
+    // Return a div with a title and a paragraph about the creators of the app
     return(
         <div className='main_container'>
             <h1>About us</h1>
@@ -14,5 +15,5 @@ function About() {
     )
 }
 
-
+// Exporting the About component as the default export of this module
 export default About;

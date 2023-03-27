@@ -1,10 +1,8 @@
 .main_container{
-    grid-column: 2;
-      /* background-color: #3d3d3d; */
-      /* display: flex; */
-      justify-content: center;
-      align-items: center;
-      
-      overflow: scroll;
-      height: 100%;
-  }
+  grid-column: 2;
+  justify-content: center;
+  align-items: center;
+
+  overflow: scroll;
+  height: 100%;
+}
