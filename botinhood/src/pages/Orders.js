@@ -71,13 +71,24 @@ function Orders() {
 
     // Fetch Long trades and push each element into an array
     getLong('LongShort').then((res) => {
-      for (let i = 0; i < res.length; i++) {
-        const element = res[i];
-        stockListArray.push(<StockOrder name={element} />)
-      }
-      // Set the state of stockList with the array of Long trades
-      setStockList(stockListArray)
-    })
+        getQuantity().then((result) => {
+          let quantitiesList = Object.entries(result);
+  
+          // Map through the list of quantities and create a new StockOrder for each item
+          quantitiesList.map(function ([key, value]) {
+              console.log(res)
+              console.log("The key is ", key)
+              console.log(res.includes(key))
+              console.log(value)
+            if (res.includes(key)) {
+              stockListArray.push(<StockOrder name={key} quantity={value} />)
+                console.log("Pushed the value")
+            }
+            
+          })
+              // Set the state of stockList with the array of Long and Short trades
+              setStockList(stockListArray)
+          })})
 
     // Fetch Short trades and push each element into the same array as Long trades
     getShort('LongShort').then((res) => {
@@ -86,6 +97,11 @@ function Orders() {
 
         // Map through the list of quantities and create a new StockOrder for each item
         quantitiesList.map(function ([key, value]) {
+            
+            console.log(res)
+            console.log("The key is ", key)
+            console.log(res.includes(key))
+            console.log(value)
           if (res.includes(key)) {
             stockListArray.push(<StockOrder name={key} quantity={value} />)    
           } else {
@@ -99,7 +115,6 @@ function Orders() {
         // Set the state of stockList with the array of Long and Short trades
         setStockList(stockListArray)
     })}, [])
-// have activate only once 
     
 
     // Render the Orders page
