@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import '../styles/StockOrder.css';
 
 // function StockOrder({name}, {availability}, {timestamp}, {quantity}, {transaction}){

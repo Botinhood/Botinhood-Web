@@ -1,14 +1,13 @@
 // Importing required dependencies
 import React, {useState, useEffect} from 'react';
 import '../styles/Assets.css';
-import graph from '../assets/temp-graph.png'
 
 // Importing custom component
 import StockRow from '../components/StockRow';
 
 // Setting up constants
-const CLIENT_ID = '0b17ccc305d2be4a87d6d54135ea0f28';
-const REDIRECT_URI = 'http://localhost:3000/';
+// const CLIENT_ID = '0b17ccc305d2be4a87d6d54135ea0f28';
+// const REDIRECT_URI = 'http://localhost:3000/';
 
 // Function to get stock data from an API endpoint
 async function getStockData(botType){
@@ -31,7 +30,7 @@ const tempStockData = [
 // Defining the Assets component
 function Assets(){
     // Initializing state variables using the useState hook
-    const [myStocks, setMyStocks] = useState(tempStockData)
+    // const [myStocks, setMyStocks] = useState(tempStockData)
     const [stockList, setStockList]= useState(tempStockData);
     const [toggleStocks, setToggleStocks] = useState(false)
     const [totalMoney, setTotalMoney] = useState(0.0)
@@ -64,13 +63,15 @@ function Assets(){
                     let Volume = res[1].bar[1].Volume
                     let ClosePrice = res[1].bar[1].ClosePrice
                     if (typeof(Volume) != "undefined" && typeof(Volume) != "undefined" ){
-                    let totalValue = totalMoney + ( Volume * ClosePrice )
+                    let totalValue = totalMoney + ( Volume * ClosePrice/30 )
+                    
                     setTotalMoney(totalValue)}
                   } 
             })
         }, 10)
     
         return () => clearInterval(interval)
+        // eslint-disable-next-line
     }, [])
 
     // Rendering the component
@@ -87,7 +88,7 @@ function Assets(){
             </div>
             <div id='totals_container'>
                 <h1 className='center'>Total money</h1>
-                <h1 className='center'>{totalMoney}$</h1>
+                <h1 className='center'>${totalMoney.toFixed(2)}</h1>
             </div>
         </div>
     );

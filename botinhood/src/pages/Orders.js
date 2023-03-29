@@ -1,7 +1,6 @@
 // Import React and necessary components
 import React from 'react';
 import '../styles/Orders.css';
-import StockItem from '../components/StockItem';
 import StockOrder from '../components/StockOrder';
 
 // Function to fetch data from the backend API for Long trades
@@ -32,18 +31,18 @@ async function getShort(botType) {
 }
 
 // Function to fetch data from the backend API for Long and Short trades
-async function getStockData(botType) {
-  let res = await fetch("http://localhost:8000/api/v1/stock/getLongShort", {
-    method: "GET",
-    headers: {
-      'Cache-Control': 'no-cache',
-      'Accept': '*/*',
-      'Accept-Encoding': 'gzip,deflate,br'
-    }
-  })
-  console.log('waiting for response');
-  return await res.json();
-}
+// async function getStockData(botType) {
+//   let res = await fetch("http://localhost:8000/api/v1/stock/getLongShort", {
+//     method: "GET",
+//     headers: {
+//       'Cache-Control': 'no-cache',
+//       'Accept': '*/*',
+//       'Accept-Encoding': 'gzip,deflate,br'
+//     }
+//   })
+//   console.log('waiting for response');
+//   return await res.json();
+// }
 
 // Function to fetch data from the backend API for quantities of stocks
 async function getQuantity() {
@@ -64,7 +63,7 @@ async function getQuantity() {
 function Orders() {
   // Initialize state variables for stock list and quantity list
   const [stockList, setStockList] = React.useState(null);
-  const [stockQuantity, setQuantityList] = React.useState(null);
+  // const [stockQuantity, setQuantityList] = React.useState(null);
 
   // Fetch Long and Short trades from the backend API when component mounts
   React.useEffect(() => {
@@ -88,10 +87,11 @@ function Orders() {
         // Map through the list of quantities and create a new StockOrder for each item
         quantitiesList.map(function ([key, value]) {
           if (res.includes(key)) {
-            stockListArray.push(<StockOrder name={key} quantity={value} />)
+            stockListArray.push(<StockOrder name={key} quantity={value} />)    
           } else {
             stockListArray.push(<StockOrder name={key} quantity={'No quantity found'} />)
           }
+          return null;
         })
             // Set the state of stockList with the array of Long and Short trades
             setStockList(stockListArray)

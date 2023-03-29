@@ -125,7 +125,7 @@ function Home(){
         return(
             <div className='main_container'>
                 <div className='select_bot'>
-                    <button className='dropdown' onClick={handleOpen}>Dropdown</button>
+                    <button className='dropdown' onClick={handleOpen}>Long Short</button>
                     {open ? (
                         <ul className="menu">
                             <li className="menu-item">
