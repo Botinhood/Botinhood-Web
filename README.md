@@ -26,5 +26,5 @@ Alex Berryhill, Eric Poole, Erik Sanders, Haydon Uresti, Ravy Lim, Tapelo Dube
 {Make a list of things that you need to fix, improve, and add in the future.}
 
 - Display more information about the stock transactions on the Orders page.
-- Item 2
+- Allow for more users to create accounts.
 - Item 3
