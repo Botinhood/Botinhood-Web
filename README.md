@@ -22,6 +22,7 @@ Alex Berryhill, Eric Poole, Erik Sanders, Haydon Uresti, Ravy Lim, Tapelo Dube
 
 - [Alpaca](https://alpaca.markets/support/can-developers-enable-other-users-to-login-with-their-own-credentials)
 - [W3 Schools](https://www.w3schools.com/jsref/jsref_includes_array.asp)
+- [React Documentation](https://legacy.reactjs.org/docs/getting-started.html)
 
 # Future Work
 
@@ -29,4 +30,4 @@ Alex Berryhill, Eric Poole, Erik Sanders, Haydon Uresti, Ravy Lim, Tapelo Dube
 
 - Display more information about the stock transactions on the Orders page.
 - Allow for more users to create accounts.
-- Item 3
+- Improve UI to be more intuitive with new users.
