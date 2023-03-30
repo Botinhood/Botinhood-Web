@@ -3,8 +3,6 @@ import '../styles/StockOrder.css';
 
 // function StockOrder({name}, {availability}, {timestamp}, {quantity}, {transaction}){
 function StockOrder({name, quantity}){
-    console.log(quantity, "Is the quant in stockorders")
-    console.log("In stockorders, the name is ", name)
     return (
         <div className="orders_container">
             <div >

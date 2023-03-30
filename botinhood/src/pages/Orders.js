@@ -76,13 +76,10 @@ function Orders() {
   
           // Map through the list of quantities and create a new StockOrder for each item
           quantitiesList.map(function ([key, value]) {
-              console.log(res)
-              console.log("The key is ", key)
-              console.log(res.includes(key))
-              console.log(value)
+              
             if (res.includes(key)) {
               stockListArray.push(<StockOrder name={key} quantity={value} />)
-                console.log("Pushed the value")
+                
             }
             
           })
@@ -98,10 +95,7 @@ function Orders() {
         // Map through the list of quantities and create a new StockOrder for each item
         quantitiesList.map(function ([key, value]) {
             
-            console.log(res)
-            console.log("The key is ", key)
-            console.log(res.includes(key))
-            console.log(value)
+        
           if (res.includes(key)) {
             stockListArray.push(<StockOrder name={key} quantity={value} />)    
           } else {
