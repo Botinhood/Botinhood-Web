@@ -10,7 +10,7 @@ to botinhood and run the 'npm install' command. Next run the command 'npm start'
 # Development Environment
 
 Botinhood was written in VS Code primarily using the JavaScript, TypeScript, CSS languages.
-It utilizes the React and Nest JS libraries to build the web app. The app uses the Alpaca API to get recent stock data.
+It utilizes the React and Nest JS libraries to build the web app. The app uses the Alpaca API to get recent stock data. MongoDB also used as a storage location.
 
 # Collaborators
 
