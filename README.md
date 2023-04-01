@@ -16,7 +16,7 @@ Alex Berryhill, Eric Poole, Erik Sanders, Haydon Uresti, Ravy Lim, Tapelo Dube
 
 # Useful Websites
 
-- [Alpaca](https://alpaca.markets/support/can-developers-enable-other-users-to-login-with-their-own-credentials)
+- [Alpaca](https://alpaca.markets/docs/oauth/guide/)
 - [W3 Schools](https://www.w3schools.com/jsref/jsref_includes_array.asp)
 - [React Documentation](https://legacy.reactjs.org/docs/getting-started.html)
 
